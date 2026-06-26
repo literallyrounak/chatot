@@ -44,7 +44,7 @@ const Sidebar = () => {
       <div className="w-64 border-r border-base-content/5 flex flex-col h-full">
         <div className="p-5 border-b border-base-content/5">
           <h2 className="text-xs font-bold tracking-widest text-base-content/60 uppercase">
-            Messages
+            Contacts
           </h2>
           <div className="mt-4 flex items-center justify-between">
             <span className="text-[11px] font-semibold text-base-content/40 uppercase tracking-wider">
@@ -91,7 +91,7 @@ const Sidebar = () => {
                   {user.fullName}
                 </div>
                 <div className="text-[11px] text-base-content/40 font-medium tracking-tight">
-                  {onlineUsers.includes(user._id) ? "ACTIVE NOW" : "OFFLINE"}
+                  {onlineUsers.includes(user._id) ? "Online" : "Offline"}
                 </div>
               </div>
             </button>

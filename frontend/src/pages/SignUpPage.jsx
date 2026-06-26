@@ -49,7 +49,7 @@ const SignUpPage = () => {
                   Create Account
                 </h1>
                 <p className="text-sm font-medium text-base-content/40 tracking-wide uppercase">
-                  Initialize your secure workstation
+                  Get started with your free account
                 </p>
               </div>
             </div>
@@ -58,7 +58,7 @@ const SignUpPage = () => {
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="space-y-2">
               <label className="text-[10px] font-bold uppercase tracking-[0.2em] text-base-content/50 ml-1">
-                Full Identification
+                Full Name
               </label>
               <div className="relative">
                 <input
@@ -73,7 +73,7 @@ const SignUpPage = () => {
 
             <div className="space-y-2">
               <label className="text-[10px] font-bold uppercase tracking-[0.2em] text-base-content/50 ml-1">
-                Communication Endpoint
+                Email
               </label>
               <div className="relative">
                 <input
@@ -88,7 +88,7 @@ const SignUpPage = () => {
 
             <div className="space-y-2">
               <label className="text-[10px] font-bold uppercase tracking-[0.2em] text-base-content/50 ml-1">
-                Access Credentials
+                Password
               </label>
               <div className="relative">
                 <input
@@ -120,19 +120,19 @@ const SignUpPage = () => {
               {isSigningUp ? (
                 <div className="flex items-center justify-center gap-2">
                   <Loader2 className="size-4 animate-spin" />
-                  <span>Configuring...</span>
+                  <span>Loading...</span>
                 </div>
               ) : (
-                "Initialize Access"
+                "Create Account"
               )}
             </button>
           </form>
 
           <div className="text-center pt-2">
             <p className="text-xs font-medium text-base-content/40 tracking-wide uppercase">
-              Already initialized?{" "}
+              Already have an account?{" "}
               <Link to="/login" className="text-primary font-bold hover:underline">
-                Sign in to Terminal
+                Sign in
               </Link>
             </p>
           </div>

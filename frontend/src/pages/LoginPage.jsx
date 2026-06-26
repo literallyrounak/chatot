@@ -32,7 +32,7 @@ const LoginPage = () => {
                   Welcome Back
                 </h1>
                 <p className="text-sm font-medium text-base-content/40 tracking-wide uppercase">
-                  Sign in to your message stream
+                  Sign in to your account
                 </p>
               </div>
             </div>
@@ -42,13 +42,13 @@ const LoginPage = () => {
           <form onSubmit={handleSubmit} className="space-y-8">
             <div className="space-y-2">
               <label className="text-[10px] font-bold uppercase tracking-[0.2em] text-base-content/50 ml-1">
-                Email Address
+                Email
               </label>
               <div className="relative">
                 <input
                   type="email"
                   className="w-full px-4 py-3 bg-base-200/50 border border-base-content/5 rounded-lg text-sm focus:border-primary/30 focus:bg-base-100 transition-all outline-none font-medium placeholder:text-base-content/20"
-                  placeholder="name@company.com"
+                  placeholder="you@example.com"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 />
@@ -57,7 +57,7 @@ const LoginPage = () => {
 
             <div className="space-y-2">
               <label className="text-[10px] font-bold uppercase tracking-[0.2em] text-base-content/50 ml-1">
-                Security Key
+                Password
               </label>
               <div className="relative">
                 <input
@@ -89,19 +89,19 @@ const LoginPage = () => {
               {isLoggingIn ? (
                 <div className="flex items-center justify-center gap-2">
                   <Loader2 className="size-4 animate-spin ring-offset-2" />
-                  <span>Verifying...</span>
+                  <span>Loading...</span>
                 </div>
               ) : (
-                "Authenticate"
+                "Sign in"
               )}
             </button>
           </form>
 
           <div className="text-center pt-2">
             <p className="text-xs font-medium text-base-content/40 tracking-wide uppercase">
-              New here?{" "}
+              Don't have an account?{" "}
               <Link to="/signup" className="text-primary font-bold hover:underline">
-                Register Workstation
+                Create account
               </Link>
             </p>
           </div>
