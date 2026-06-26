@@ -5,17 +5,17 @@ const SidebarSkeleton = () => {
   const skeletonContacts = Array(8).fill(null);
 
   return (
-    <aside className="h-full flex transition-all duration-200">
+    <aside className="h-full flex w-full lg:w-auto transition-all duration-200">
       {/* Column 1: Workspace Navigation Skeleton */}
-      <div className="w-16 flex flex-col items-center py-4 border-r border-base-content/5 bg-base-200/30 gap-4">
-        <div className="skeleton size-10 rounded-md" />
-        <div className="w-8 h-[1px] skeleton my-2" />
-        <div className="skeleton size-10 rounded-md" />
+      <div className="w-14 sm:w-16 flex flex-col items-center py-4 border-r border-base-content/5 bg-base-200/30 gap-4 flex-shrink-0">
+        <div className="skeleton size-9 sm:size-10 rounded-md" />
+        <div className="w-6 sm:w-8 h-[1px] skeleton my-2" />
+        <div className="skeleton size-9 sm:size-10 rounded-md" />
       </div>
 
       {/* Column 2: Contact List Skeleton */}
-      <div className="w-64 border-r border-base-content/5 flex flex-col h-full">
-        <div className="p-5 border-b border-base-content/5">
+      <div className="flex-1 lg:w-64 border-r border-base-content/5 flex flex-col h-full bg-base-100/50">
+        <div className="p-4 sm:p-5 border-b border-base-content/5">
           <div className="skeleton h-3 w-16 mb-4" />
           <div className="flex items-center justify-between">
             <div className="skeleton h-2 w-10" />

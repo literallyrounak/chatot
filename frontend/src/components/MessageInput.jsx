@@ -48,7 +48,7 @@ const MessageInput = () => {
   };
 
   return (
-    <div className="px-6 py-4 w-full bg-base-100 border-t border-base-content/5">
+    <div className="px-4 sm:px-6 py-4 w-full bg-base-100 border-t border-base-content/5">
       {imagePreview && (
         <div className="mb-4 flex items-center gap-3">
           <div className="relative group">

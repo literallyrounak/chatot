@@ -7,9 +7,9 @@ const Navbar = () => {
 
   return (
     <header className="bg-base-100/70 border-b border-base-content/5 fixed w-full top-0 z-40 backdrop-blur-md">
-      <div className="max-w-7xl mx-auto px-6 h-14">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 h-14">
         <div className="flex items-center justify-between h-full">
-          <div className="flex items-center gap-8">
+          <div className="flex items-center gap-4 sm:gap-8">
             <Link to="/" className="flex items-center gap-2.5 hover:opacity-80 transition-all group">
               <div className="size-8 rounded-md bg-primary/5 flex items-center justify-center border border-primary/10 group-hover:bg-primary/10 transition-colors">
                 <MessageSquare className="size-4 text-primary" />

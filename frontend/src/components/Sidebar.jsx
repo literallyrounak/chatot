@@ -21,33 +21,33 @@ const Sidebar = () => {
   if (isUsersLoading) return <SidebarSkeleton />;
 
   return (
-    <aside className="h-full flex transition-all duration-200">
+    <aside className="h-full flex w-full lg:w-auto transition-all duration-200 overflow-hidden">
       {/* Column 1: Workspace Navigation (Slim) */}
-      <div className="w-16 flex flex-col items-center py-4 border-r border-base-content/5 bg-base-200/30 gap-4">
+      <div className="w-14 sm:w-16 flex flex-col items-center py-4 border-r border-base-content/5 bg-base-200/30 gap-4 flex-shrink-0">
         <div className="relative group">
           <img
             src={authUser?.profilePic || "/avatar.png"}
             alt="Profile"
-            className="size-10 rounded-md object-cover border border-base-content/10 group-hover:border-primary transition-colors cursor-pointer"
+            className="size-9 sm:size-10 rounded-md object-cover border border-base-content/10 group-hover:border-primary transition-colors cursor-pointer"
           />
-          <div className="absolute -right-1 -bottom-1 size-3 bg-green-500 rounded-full border-2 border-base-100" />
+          <div className="absolute -right-1 -bottom-1 size-2.5 sm:size-3 bg-green-500 rounded-full border-2 border-base-100" />
         </div>
         
-        <div className="w-8 h-[1px] bg-base-content/10 my-2" />
+        <div className="w-6 sm:w-8 h-[1px] bg-base-content/10 my-2" />
         
-        <button className="size-10 rounded-md bg-base-content/5 flex items-center justify-center hover:bg-base-content/10 transition-colors">
-          <Users className="size-5 opacity-70" />
+        <button className="size-9 sm:size-10 rounded-md bg-base-content/5 flex items-center justify-center hover:bg-base-content/10 transition-colors">
+          <Users className="size-4 sm:size-5 opacity-70" />
         </button>
       </div>
 
       {/* Column 2: Contact List */}
-      <div className="w-64 border-r border-base-content/5 flex flex-col h-full">
-        <div className="p-5 border-b border-base-content/5">
-          <h2 className="text-xs font-bold tracking-widest text-base-content/60 uppercase">
+      <div className="flex-1 lg:w-64 border-r border-base-content/5 flex flex-col h-full bg-base-100/50">
+        <div className="p-4 sm:p-5 border-b border-base-content/5">
+          <h2 className="text-[10px] sm:text-xs font-bold tracking-widest text-base-content/60 uppercase">
             Contacts
           </h2>
-          <div className="mt-4 flex items-center justify-between">
-            <span className="text-[11px] font-semibold text-base-content/40 uppercase tracking-wider">
+          <div className="mt-4 flex items-center justify-between gap-2">
+            <span className="text-[10px] sm:text-[11px] font-semibold text-base-content/40 uppercase tracking-wider">
               Recent
             </span>
             <label className="cursor-pointer flex items-center gap-2">
@@ -57,7 +57,7 @@ const Sidebar = () => {
                 onChange={(e) => setShowOnlineOnly(e.target.checked)}
                 className="checkbox checkbox-xs"
               />
-              <span className="text-[10px] uppercase tracking-wide opacity-60">Online Only</span>
+              <span className="text-[9px] sm:text-[10px] uppercase tracking-wide opacity-60 whitespace-nowrap">Online Only</span>
             </label>
           </div>
         </div>
@@ -98,8 +98,8 @@ const Sidebar = () => {
           ))}
 
           {filteredUsers.length === 0 && (
-            <div className="p-8 text-center">
-              <p className="text-xs uppercase tracking-widest text-base-content/30 font-bold">
+            <div className="p-8 text-center text-base-content/30">
+              <p className="text-xs uppercase tracking-widest font-bold">
                 No users found
               </p>
             </div>
