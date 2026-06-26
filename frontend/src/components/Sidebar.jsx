@@ -7,7 +7,7 @@ import { Users } from "lucide-react";
 const Sidebar = () => {
   const { getUsers, users, selectedUser, setSelectedUser, isUsersLoading } = useChatStore();
 
-  const { onlineUsers } = useAuthStore();
+  const { onlineUsers, authUser } = useAuthStore();
   const [showOnlineOnly, setShowOnlineOnly] = useState(false);
 
   useEffect(() => {
@@ -21,65 +21,90 @@ const Sidebar = () => {
   if (isUsersLoading) return <SidebarSkeleton />;
 
   return (
-    <aside className="h-full w-20 lg:w-72 border-r border-base-300 flex flex-col transition-all duration-200">
-      <div className="border-b border-base-300 w-full p-5">
-        <div className="flex items-center gap-2">
-          <Users className="size-6" />
-          <span className="font-medium hidden lg:block">Contacts</span>
+    <aside className="h-full flex transition-all duration-200">
+      {/* Column 1: Workspace Navigation (Slim) */}
+      <div className="w-16 flex flex-col items-center py-4 border-r border-base-content/5 bg-base-200/30 gap-4">
+        <div className="relative group">
+          <img
+            src={authUser?.profilePic || "/avatar.png"}
+            alt="Profile"
+            className="size-10 rounded-md object-cover border border-base-content/10 group-hover:border-primary transition-colors cursor-pointer"
+          />
+          <div className="absolute -right-1 -bottom-1 size-3 bg-green-500 rounded-full border-2 border-base-100" />
         </div>
-        {/* TODO: Online filter toggle */}
-        <div className="mt-3 hidden lg:flex items-center gap-2">
-          <label className="cursor-pointer flex items-center gap-2">
-            <input
-              type="checkbox"
-              checked={showOnlineOnly}
-              onChange={(e) => setShowOnlineOnly(e.target.checked)}
-              className="checkbox checkbox-sm"
-            />
-            <span className="text-sm">Show online only</span>
-          </label>
-          <span className="text-xs text-zinc-500">({onlineUsers.length - 1} online)</span>
-        </div>
+        
+        <div className="w-8 h-[1px] bg-base-content/10 my-2" />
+        
+        <button className="size-10 rounded-md bg-base-content/5 flex items-center justify-center hover:bg-base-content/10 transition-colors">
+          <Users className="size-5 opacity-70" />
+        </button>
       </div>
 
-      <div className="overflow-y-auto w-full py-3">
-        {filteredUsers.map((user) => (
-          <button
-            key={user._id}
-            onClick={() => setSelectedUser(user)}
-            className={`
-              w-full p-3 flex items-center gap-3
-              hover:bg-base-300 transition-colors
-              ${selectedUser?._id === user._id ? "bg-base-300 ring-1 ring-base-300" : ""}
-            `}
-          >
-            <div className="relative mx-auto lg:mx-0">
-              <img
-                src={user.profilePic || "/avatar.png"}
-                alt={user.name}
-                className="size-12 object-cover rounded-full"
+      {/* Column 2: Contact List */}
+      <div className="w-64 border-r border-base-content/5 flex flex-col h-full">
+        <div className="p-5 border-b border-base-content/5">
+          <h2 className="text-xs font-bold tracking-widest text-base-content/60 uppercase">
+            Messages
+          </h2>
+          <div className="mt-4 flex items-center justify-between">
+            <span className="text-[11px] font-semibold text-base-content/40 uppercase tracking-wider">
+              Recent
+            </span>
+            <label className="cursor-pointer flex items-center gap-2">
+              <input
+                type="checkbox"
+                checked={showOnlineOnly}
+                onChange={(e) => setShowOnlineOnly(e.target.checked)}
+                className="checkbox checkbox-xs"
               />
-              {onlineUsers.includes(user._id) && (
-                <span
-                  className="absolute bottom-0 right-0 size-3 bg-green-500 
-                  rounded-full ring-2 ring-zinc-900"
+              <span className="text-[10px] uppercase tracking-wide opacity-60">Online Only</span>
+            </label>
+          </div>
+        </div>
+
+        <div className="flex-1 overflow-y-auto custom-scrollbar pt-2">
+          {filteredUsers.map((user) => (
+            <button
+              key={user._id}
+              onClick={() => setSelectedUser(user)}
+              className={`
+                w-full px-4 py-3 flex items-center gap-3
+                transition-all duration-200 group
+                ${selectedUser?._id === user._id 
+                  ? "bg-base-content/5 border-r-2 border-primary" 
+                  : "hover:bg-base-content/5"}
+              `}
+            >
+              <div className="relative flex-shrink-0">
+                <img
+                  src={user.profilePic || "/avatar.png"}
+                  alt={user.name}
+                  className="size-9 object-cover rounded-md border border-base-content/10"
                 />
-              )}
-            </div>
-
-            {/* User info - only visible on larger screens */}
-            <div className="hidden lg:block text-left min-w-0">
-              <div className="font-medium truncate">{user.fullName}</div>
-              <div className="text-sm text-zinc-400">
-                {onlineUsers.includes(user._id) ? "Online" : "Offline"}
+                {onlineUsers.includes(user._id) && (
+                  <span className="absolute -right-0.5 -bottom-0.5 size-2.5 bg-green-500 rounded-full border-2 border-base-100" />
+                )}
               </div>
-            </div>
-          </button>
-        ))}
 
-        {filteredUsers.length === 0 && (
-          <div className="text-center text-zinc-500 py-4">No online users</div>
-        )}
+              <div className="text-left min-w-0 flex-1">
+                <div className={`text-sm font-medium truncate ${selectedUser?._id === user._id ? "text-primary" : "text-base-content"}`}>
+                  {user.fullName}
+                </div>
+                <div className="text-[11px] text-base-content/40 font-medium tracking-tight">
+                  {onlineUsers.includes(user._id) ? "ACTIVE NOW" : "OFFLINE"}
+                </div>
+              </div>
+            </button>
+          ))}
+
+          {filteredUsers.length === 0 && (
+            <div className="p-8 text-center">
+              <p className="text-xs uppercase tracking-widest text-base-content/30 font-bold">
+                No users found
+              </p>
+            </div>
+          )}
+        </div>
       </div>
     </aside>
   );

@@ -5,34 +5,35 @@ const SidebarSkeleton = () => {
   const skeletonContacts = Array(8).fill(null);
 
   return (
-    <aside
-      className="h-full w-20 lg:w-72 border-r border-base-300 
-    flex flex-col transition-all duration-200"
-    >
-      {/* Header */}
-      <div className="border-b border-base-300 w-full p-5">
-        <div className="flex items-center gap-2">
-          <Users className="w-6 h-6" />
-          <span className="font-medium hidden lg:block">Contacts</span>
-        </div>
+    <aside className="h-full flex transition-all duration-200">
+      {/* Column 1: Workspace Navigation Skeleton */}
+      <div className="w-16 flex flex-col items-center py-4 border-r border-base-content/5 bg-base-200/30 gap-4">
+        <div className="skeleton size-10 rounded-md" />
+        <div className="w-8 h-[1px] skeleton my-2" />
+        <div className="skeleton size-10 rounded-md" />
       </div>
 
-      {/* Skeleton Contacts */}
-      <div className="overflow-y-auto w-full py-3">
-        {skeletonContacts.map((_, idx) => (
-          <div key={idx} className="w-full p-3 flex items-center gap-3">
-            {/* Avatar skeleton */}
-            <div className="relative mx-auto lg:mx-0">
-              <div className="skeleton size-12 rounded-full" />
-            </div>
-
-            {/* User info skeleton - only visible on larger screens */}
-            <div className="hidden lg:block text-left min-w-0 flex-1">
-              <div className="skeleton h-4 w-32 mb-2" />
-              <div className="skeleton h-3 w-16" />
-            </div>
+      {/* Column 2: Contact List Skeleton */}
+      <div className="w-64 border-r border-base-content/5 flex flex-col h-full">
+        <div className="p-5 border-b border-base-content/5">
+          <div className="skeleton h-3 w-16 mb-4" />
+          <div className="flex items-center justify-between">
+            <div className="skeleton h-2 w-10" />
+            <div className="skeleton h-2 w-16" />
           </div>
-        ))}
+        </div>
+
+        <div className="flex-1 overflow-y-auto py-2">
+          {skeletonContacts.map((_, idx) => (
+            <div key={idx} className="w-full px-4 py-3 flex items-center gap-3">
+              <div className="skeleton size-9 rounded-md flex-shrink-0" />
+              <div className="flex-1 min-w-0">
+                <div className="skeleton h-3 w-24 mb-2" />
+                <div className="skeleton h-2 w-12" />
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </aside>
   );
