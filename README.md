@@ -4,8 +4,6 @@ A modern, real-time chat application built with the MERN stack, featuring seamle
 
 **Live Demo:** [https://chatot-4u65.onrender.com/](https://chatot-4u65.onrender.com/)
 
-**GitHub Repository:** [https://github.com/literallyrounak/chatot](https://github.com/literallyrounak/chatot)
-
 ---
 
 ##  Features
@@ -21,7 +19,7 @@ A modern, real-time chat application built with the MERN stack, featuring seamle
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 ### Frontend
 - **React.js** - UI library
@@ -34,6 +32,7 @@ A modern, real-time chat application built with the MERN stack, featuring seamle
 - **MongoDB** - NoSQL database
 - **Socket.io** - WebSocket implementation for real-time features
 - **JWT** - Authentication
+- **Bcrypt.Js** - Hashing Passwords
 
 ### Other Tools
 - **Render** - Deployment platform
